@@ -15,8 +15,7 @@ It replies to simple keywords (greetings, date, time, thanks, etc.) and is desig
 - **Vanilla JavaScript** for logic & DOM manipulation
 
 ## ▶️ Live Demo
-> Add your GitHub Pages link here after enabling Pages (Settings → Pages).  
-Example: `https://<your-username>.github.io/Chatbot/`
+🚀 Live Demo: [Chatbot Project](https://prerna001-source.github.io/Chatbot/)
 
 ## 🧪 Try These
 - `hi` / `hello`
