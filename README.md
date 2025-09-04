@@ -27,4 +27,5 @@ It replies to simple keywords (greetings, date, time, thanks, etc.) and is desig
 ## 🗂 How to Run Locally
 1. Download or clone the repo  
    ```bash
-   git clone https://github.com/<your-username>/Chatbot.git
+  git clone https://github.com/Prerna001-source/Chatbot.git
+
