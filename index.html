@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .chat-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .chat-header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .chat-messages {
+            height: 350px;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #fafafa;
+        }
+        
+        .message {
+            margin-bottom: 12px;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 75%;
+        }
+        
+        .user-message {
+            background-color: #e1f5fe;
+            margin-left: auto;
+            text-align: right;
+        }
+        
+        .bot-message {
+            background-color: #eeeeee;
+            margin-right: auto;
+        }
+        
+        .chat-input {
+            padding: 12px;
+            background-color: white;
+            border-top: 1px solid #ddd;
+            display: flex;
+        }
+        
+        .message-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 8px;
+        }
+        
+        .send-button {
+            padding: 10px 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .send-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>My First Chatbot</h2>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                Hello! 👋 I’m a simple chatbot created by a student. How can I help you?
+            </div>
+        </div>
+        
+        <div class="chat-input">
+            <input type="text" class="message-input" id="messageInput" placeholder="Type your message here...">
+            <button class="send-button" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const messageInput = document.getElementById('messageInput');
+        
+        // Simple keyword-based responses (beginner-friendly)
+        function getResponse(message) {
+            const lower = message.toLowerCase();
+
+            if (lower.includes("hello") || lower.includes("hi")) {
+                return "Hi there! Nice to meet you 😊";
+            } else if (lower.includes("how are you")) {
+                return "I’m doing well! Thanks for asking.";
+            } else if (lower.includes("name")) {
+                return "I’m just a simple chatbot made by a fresher student.";
+            } else if (lower.includes("bye")) {
+                return "Goodbye! Have a great day!";
+            } else if (lower.includes("thanks") || lower.includes("thank you")) {
+                return "You're welcome!";
+            } else if (lower.includes("time")) {
+                return "The current time is: " + new Date().toLocaleTimeString();
+            } else if (lower.includes("date")) {
+                return "Today's date is: " + new Date().toLocaleDateString();
+            } else {
+                return "I’m still learning 🤖 Please try asking something simple.";
+            }
+        }
+
+        function sendMessage() {
+            const message = messageInput.value.trim();
+            if (message === '') return;
+
+            addMessage(message, true);
+            messageInput.value = '';
+
+            setTimeout(() => {
+                const response = getResponse(message);
+                addMessage(response, false);
+            }, 600);
+        }
+
+        function addMessage(text, isUser) {
+            const div = document.createElement('div');
+            div.className = isUser ? 'message user-message' : 'message bot-message';
+            div.textContent = text;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Send with Enter key
+        messageInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
